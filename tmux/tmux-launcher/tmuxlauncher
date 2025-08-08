@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+projects_folder="$HOME/projects"
+
+program_path=$(dirname "$(realpath "$0")")
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    active_sessions=$(tmux list-sessions | awk '{print "(active) " $0}')
+
+    launch=$(find $program_path/sessions -mindepth 1 -maxdepth 1 | awk '{print "(launch) " $0}')
+
+    directories=$(find "$projects_folder" -mindepth 1 -maxdepth 1 -type d | awk '{print "(dir)    " $0}')
+
+    selected=$(printf "$active_sessions\n$launch\n$directories" | awk 'NF > 0' | fzf)
+fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+session_name=$(basename "$selected" | tr . _)
+tmux_running=$(pgrep tmux)
+
+create_command=""
+
+if [[ -n "$(echo $selected | grep '(active)')" ]]; then
+    session_name=$(echo $selected | awk '{print $2}' | cut -d: -f1)
+fi
+
+if [[ -n "$(echo $selected | grep '(launch)')" ]]; then
+    file_path=$(echo $selected | awk '{print $2}' | xargs -x0 -- realpath)
+    session_name=$(echo "$file_path" | xargs -x0 -- basename | sed -E 's/([^ ])\.tmux\.conf/\1/')
+
+    #try to find directory with matching name in the projects folder
+    #note that from your script you can change the directory of the session
+    directory=$(find "$projects_folder" -maxdepth 1 -mindepth 1 -type d | grep $session_name | head -n 1)
+    
+    if [[ -z $directory ]]; then
+        directory=$(pwd);
+    fi
+
+    # still cant apply config only to new session
+    #-Llaunch
+    create_command="tmux new-session -Ed -s $session_name -c $directory 'tmux source-file $file_path; exec $SHELL'"
+fi
+
+if [[ -n "$(echo $selected | grep '(dir)')" ]]; then
+    session_path=$(echo "$selected" | awk '{print $2}')
+    session_name=$(basename $session_path | tr . _)
+
+    create_command="tmux new-session -Ed -s $session_name -c $session_path 'exec $SHELL'"
+fi
+
+if ! tmux has-session -t=$session_name 2> /dev/null && [[ -n $create_command ]]; then
+    eval "$create_command"
+fi
+
+if [[ -z $TMUX ]]; then
+    tmux attach -t $session_name
+else
+    tmux switch-client -t $session_name
+fi

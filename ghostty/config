@@ -1,0 +1,44 @@
+# This is the configuration file for Ghostty.
+
+theme = rose-pine-moon
+background = 000000
+background-opacity = 0.8
+
+# font-family = "Tahoma" #breaking
+font-size = 13
+cursor-style = block
+
+cursor-style-blink = false
+shell-integration-features = no-cursor
+adjust-cursor-height = -5%
+#cursor-color = #e0def4
+gtk-titlebar = false
+
+# use theese if using maximized
+# maximize = true 
+# window-padding-balance = false
+# window-padding-y = 15,0
+# window-padding-color = extend
+
+#use theese if not maximized
+#window-padding-balance = true
+window-padding-x = 0
+window-padding-y = 0
+maximize = false 
+window-width = 128
+window-height = 32
+
+# remove theese because i use them with tmux windows
+keybind = alt+one=unbind
+keybind = alt+two=unbind
+keybind = alt+three=unbind
+keybind = alt+four=unbind
+keybind = alt+five=unbind
+keybind = alt+six=unbind
+keybind = alt+seven=unbind
+keybind = alt+eight=unbind
+keybind = alt+nine=unbind
+
+keybind = alt+o=text:|
+keybind = alt+shift+o=text:\\
+
