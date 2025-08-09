@@ -19,4 +19,4 @@ return {{
 
         applyColor("rose-pine-moon")
     end
-}} 
+}}
