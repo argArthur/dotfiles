@@ -42,7 +42,7 @@ keybind = alt+nine=unbind
 keybind = alt+o=text:|
 keybind = alt+shift+o=text:\\
 keybind = ç=text:'
-keybind = Ç=text:"
+keybind = shift+ç=text:"
 keybind = '=text:ç
-keybind = "=text:Ç
+keybind = shift+'=text:Ç
 
