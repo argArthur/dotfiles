@@ -29,8 +29,31 @@ vim.o.updatetime = 50
 -- Decrease mapped sequence wait time
 vim.o.timeoutlen = 1000
 
+-- Keep signcolumn on by default
+vim.o.signcolumn = 'yes'
+
 -- help and man
 vim.o.splitbelow = true
+
+--[[
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "help",
+  callback = function()
+    local current_win = vim.api.nvim_get_current_win()
+    
+    local opts = {
+      style = "minimal",
+      relative = "editor",
+      width = math.floor(vim.o.columns * 0.6),
+      height = math.floor(vim.o.lines * 0.6),
+      row = math.floor(vim.o.lines * 0.2),
+      col = math.floor(vim.o.columns * 0.2),
+      border = "rounded",
+    }
+    vim.api.nvim_win_set_config(current_win, opts)
+  end,
+})
+]]--
 
 vim.o.inccommand = 'split'
 
@@ -127,7 +150,6 @@ local function setAsciiBackground()
             end
         end,
     })
-							--BufWinLeave
 
 end
 
