@@ -7,7 +7,7 @@ return {
             preset = "ghost",
             transparent_bg = true,
             hi = {
-                background = "#000000",
+                background = "none",
             },
             options = {
                 add_messages = false,
