@@ -31,13 +31,9 @@ vim.keymap.set('n', 'ya', "mpggVGy`p");
 vim.keymap.set('n', '<leader>ya', [[mpggVG"+y`p]]);
 
 -- Diagnostic keymaps
-vim.keymap.set('n', 'K', "<cmd>lua vim.lsp.buf.hover({border = 'rounded'})<CR>");
-
 vim.keymap.set('n', '<leader>l', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
 vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-
-vim.keymap.set('n', 'ca', vim.lsp.buf.code_action)
 
 vim.keymap.set('t', '<leader><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 

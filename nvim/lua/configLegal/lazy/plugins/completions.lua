@@ -1,5 +1,6 @@
 return {
     "hrsh7th/nvim-cmp",
+    event = "UIEnter",
 
     dependencies = {
         "hrsh7th/cmp-buffer",

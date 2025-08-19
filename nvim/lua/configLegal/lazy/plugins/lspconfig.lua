@@ -11,6 +11,25 @@ return {
     },
 
     config = function()
+
+        vim.api.nvim_create_autocmd('LspAttach', {
+            group = vim.api.nvim_create_augroup('CustomLspKeymaps', { clear = true }),
+            callback = function(ev)
+
+                vim.keymap.set('n', 'K', "<cmd>lua vim.lsp.buf.hover({border = 'rounded'})<CR>");
+                vim.keymap.set('n', 'gd', vim.lsp.buf.definition);
+                vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action)
+                vim.keymap.set('n', '<leader>S', vim.lsp.buf.rename);
+
+                local client = vim.lsp.get_client_by_id(ev.data.client_id)
+                -- local bufnr = ev.buf
+
+                if client.name == 'clangd' then
+                    vim.keymap.set('n', 'gh', ':LspClangdSwitchSourceHeader<Cr>')
+                end
+            end,
+        })
+
         local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
         require("fidget").setup({})
@@ -25,6 +44,11 @@ return {
                 "--header-insertion=iwyu",
                 "--compile-commands-dir=~/",
             },
+            --[[
+            on_attach = function(client, bufnr)
+                vim.keymap.set('n', 'gh', ':LspClangdSwitchSourceHeader<Cr>')
+            end
+            ]]--
         })
 
         vim.lsp.config("lua_ls", {
