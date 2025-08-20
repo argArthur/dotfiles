@@ -1,7 +1,10 @@
 return {
     'nvim-telescope/telescope.nvim', tag = '0.1.8',
     event = 'VeryLazy',
-    dependencies = { 'nvim-lua/plenary.nvim' },
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+        { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+    },
 
     config = function ()
         local telescope = require('telescope')
@@ -26,21 +29,21 @@ return {
         local image = require("image")
 
         telescope.setup({
-            --extensions = {
-            --    fzf = {}
-            --},
-            --defaults = {
-            --    preview = {
-            --        hooks = function (filepath, bufnr, opts)
-            --            if filepath:match("%.png$") ~= nil then 
-            --               image.show(filepath, {
-            --                    buffer = bufnr,
-            --                    window = opts.winid,
-            --              }) 
-            --            end
-            --        end
-            --    },
-            --},
+            extensions = {
+                fzf = {}
+            },
+            defaults = {
+                preview = {
+                    hooks = function (filepath, bufnr, opts)
+                        if filepath:match("%.png$") ~= nil then 
+                           image.show(filepath, {
+                                buffer = bufnr,
+                                window = opts.winid,
+                          }) 
+                        end
+                    end
+                },
+            },
             pickers = {
                 find_files = { disable_devicons = true, },
                 git_files = { disable_devicons = true, },
@@ -49,7 +52,7 @@ return {
             },
         })
 
-        --telescope.load_extension('fzf')
+        telescope.load_extension('fzf')
 
         local image_previewer = require("telescope.previewers").new_buffer_previewer {
           define_preview = function(self, entry, status)

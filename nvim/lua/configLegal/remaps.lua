@@ -31,7 +31,9 @@ vim.keymap.set('n', 'ya', "mpggVGy`p");
 vim.keymap.set('n', '<leader>ya', [[mpggVG"+y`p]]);
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>l', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<leader>l', vim.diagnostic.setqflist, { desc = 'Open diagnostic [Q]uickfix list' })
+vim.keymap.set('n', '<C-m>', '<cmd>cnext<Cr>');
+vim.keymap.set('n', '<C-n>', '<cmd>cprev<Cr>');
 
 vim.keymap.set('n', '<leader>s', [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
