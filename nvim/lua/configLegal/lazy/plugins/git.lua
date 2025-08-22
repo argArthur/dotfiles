@@ -1,7 +1,3 @@
--- return {
---     "https://github.com/tpope/vim-fugitive",
--- }
-
 return {
     "kdheepak/lazygit.nvim",
     lazy = true,
