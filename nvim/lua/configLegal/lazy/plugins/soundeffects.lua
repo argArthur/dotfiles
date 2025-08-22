@@ -1,0 +1,27 @@
+return {}
+-- return {
+--   "jackplus-xyz/player-one.nvim",
+--   ---@type PlayerOne.Config
+--   opts = {
+--     -- your configuration comes here
+--     -- or leave it empty to use the default settings
+--     -- refer to the configuration section below
+--   }
+-- }
+-- return {
+--   "whleucka/reverb.nvim",
+--   event = "BufReadPre",
+--   opts = {
+--     player = "paplay", -- options: paplay (default), pw-play, mpv
+--     max_sounds = 20, -- Limit the amount of sounds that can play at the same time
+--     sounds = {
+--       -- Add custom sound paths or lists of sounds for other events here
+--       -- For example, BufRead can play a random sound from a list
+--       -- BufRead = { path = { sound_dir .. "start1.ogg", sound_dir .. "start2.ogg" }, volume = 0-100 },
+--       -- CursorMovedI = { path = sound_dir .. "click.ogg", volume = 0-100 },
+--       -- InsertLeave = { path = sound_dir .. "toggle.ogg", volume = 0-100 },
+--       -- ExitPre = { path = sound_dir .. "exit.ogg", volume = 0-100 },
+--       -- BufWrite = { path = sound_dir .. "save.ogg", volume = 0-100 },
+--     },
+--   },
+-- }
