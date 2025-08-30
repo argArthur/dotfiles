@@ -3,20 +3,29 @@ return {
     event="UIEnter",
 
     dependencies = {
-        --"stevearc/conform.nvim",
+        -- "stevearc/conform.nvim",
         "williamboman/mason.nvim",
-        "williamboman/mason-lspconfig.nvim",
         "j-hui/fidget.nvim",
         "mfussenegger/nvim-jdtls",
     },
 
     config = function()
 
+        require("mason").setup()
+
+        vim.lsp.enable({
+            "lua_ls",
+            "clangd",
+            "jdtls",
+            "csharp_ls",
+            "rust_analyzer",
+        })
+
         vim.api.nvim_create_autocmd('LspAttach', {
             group = vim.api.nvim_create_augroup('CustomLspKeymaps', { clear = true }),
             callback = function(ev)
 
-                vim.keymap.set('n', 'K', "<cmd>lua vim.lsp.buf.hover({border = 'rounded'})<CR>");
+                vim.keymap.set('n', 'K', "<cmd>lua vim.lsp.buf.hover({border = 'rounded'})<CR>", {buffer = ev.buf});
                 vim.keymap.set('n', 'gd', vim.lsp.buf.definition);
                 vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action)
                 vim.keymap.set('n', '<leader>S', vim.lsp.buf.rename);
@@ -82,18 +91,6 @@ return {
                 })
 
             end
-        })
-
-        require("mason").setup()
-
-        require("mason-lspconfig").setup({
-            ensure_installed = {
-                "lua_ls",
-                "clangd",
-                "jdtls",
-                "csharp_ls",
-                "rust_analyzer",
-            },
         })
 
         vim.diagnostic.config({
