@@ -3,6 +3,7 @@
 SETUVAR EDITOR:nvim
 SETUVAR --export FZF_DEFAULT_OPTS:\x2d\x2dbind\x20\x27tab\x3aup\x27\x20\x2d\x2dbind\x20\x27shift\x2dtab\x3adown\x27
 SETUVAR LAZYGIT_VERSION:0\x2e54\x2e1
+SETUVAR --export --path PATH:/home/arthur/\x2ecargo/bin\x1e/home/arthur/\x2elocal/bin\x1e/opt/ros/jazzy/bin\x1e/usr/local/sbin\x1e/usr/local/bin\x1e/usr/sbin\x1e/usr/bin\x1e/sbin\x1e/bin\x1e/usr/games\x1e/usr/local/games\x1e/snap/bin\x1e/snap/bin\x1e/home/arthur/\x2edotnet/tools\x1e/home/arthur/\x2ezig\x1e/home/arthur/blueprint\x2dcompiler\x2dv0\x2e16\x2e0/
 SETUVAR SHELL:/usr/bin/fish
 SETUVAR __fish_initialized:3800
 SETUVAR fish_color_autosuggestion:brblack

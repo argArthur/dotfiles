@@ -34,6 +34,8 @@ function bindModes
 end
 
 if status is-interactive
+    set fish_greeting -Ux fish_greeting "🐟"
+
     fish_vi_key_bindings
     set -U fish_cursor_unknown block
     set fish_cursor_default block
@@ -64,4 +66,6 @@ if status is-interactive
     bindModes insert default \co accept-autosuggestion
     bindModes insert default \cn completeOrHistory
     bindModes insert default \cp completeOrHistoryBackwards
+
+    set -gx PATH $PATH $HOME/.zig
 end
