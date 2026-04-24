@@ -10,6 +10,7 @@ else
     active_sessions=$(tmux list-sessions | awk '{print "(active) " $0}')
 
     launch=$(find $program_path/sessions -mindepth 1 -maxdepth 1 | awk '{print "(launch) " $0}')
+    # launch=$(find $program_path/sessions -mindepth 1 -maxdepth 1 | awk '{ sub(".*/", "", $0); print $0 }')
 
     directories=$(find "$projects_folder" -mindepth 1 -maxdepth 1 -type d | awk '{print "(dir)    " $0}')
 

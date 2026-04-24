@@ -34,7 +34,7 @@ function bindModes
 end
 
 if status is-interactive
-    set fish_greeting -Ux fish_greeting "🐟"
+    set -Ux fish_greeting "🐟"
 
     fish_vi_key_bindings
     set -U fish_cursor_unknown block
@@ -49,6 +49,7 @@ if status is-interactive
     abbr -a fzx 'fzf --print0 | xargs -x0 --'
     abbr -a cat 'batcat'
     set -Ux FZF_DEFAULT_OPTS "--bind 'tab:up' --bind 'shift-tab:down'"
+    set -Ux FZF_DEFAULT_COMMAND 'fd --hidden --strip-cwd-prefix'
 
     abbr -a gfa 'fzf --print0 | xargs -x0 -- git add'
 

@@ -1,5 +1,7 @@
 vim.opt.guicursor = "n-v-c-sm:blinkon0"
 
+vim.o.autowrite = true
+
 vim.o.number = true
 vim.opt.relativenumber = true
 
