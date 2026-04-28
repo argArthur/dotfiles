@@ -28,6 +28,9 @@ return {
 
         vim.keymap.set('n', '<leader>fk', builtin.keymaps)
         vim.keymap.set('n', '<leader>fh', builtin.help_tags)
+        vim.keymap.set('n', '<leader>fc', function()
+            builtin.find_files({cwd= vim.fn.stdpath('config')})
+        end)
 
         local image = require("image")
 
