@@ -69,4 +69,12 @@ if status is-interactive
     bindModes insert default \cp completeOrHistoryBackwards
 
     set -gx PATH $PATH $HOME/.zig
+    set -gx PATH "$HOME/.local/bin:$PATH"
+
+    if not set -q SSH_AUTH_SOCK
+        eval (ssh-agent -c | string match -v 'echo *')
+    end
+
+    set -gx LC_ALL "pt_BR.UTF-8"
+    set -gx LC_CTYPE "pt_BR.UTF-8"
 end

@@ -19,6 +19,7 @@ return {
             "jdtls",
             "csharp_ls",
             "rust_analyzer",
+            "pyright",
         })
 
         vim.api.nvim_create_autocmd('LspAttach', {

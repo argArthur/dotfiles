@@ -32,12 +32,15 @@ return {
             builtin.find_files({cwd= vim.fn.stdpath('config')})
         end)
 
-        local image = require("image")
+        telescope.load_extension('fzf')
+
+        -- local image = require("image")
 
         telescope.setup({
             extensions = {
                 fzf = {}
             },
+        --[[
             defaults = {
                 preview = {
                     hooks = function (filepath, bufnr, opts)
@@ -50,6 +53,7 @@ return {
                     end
                 },
             },
+        ]]
             pickers = {
                 find_files = { disable_devicons = true, },
                 git_files = { disable_devicons = true, },
@@ -58,8 +62,7 @@ return {
             },
         })
 
-        telescope.load_extension('fzf')
-
+        --[[
         local image_previewer = require("telescope.previewers").new_buffer_previewer {
           define_preview = function(self, entry, status)
 
@@ -123,5 +126,6 @@ return {
         vim.api.nvim_create_user_command("ImagePicker", image_picker, {})
 
         vim.keymap.set('n', '<leader>fi', image_picker)
+        ]]
     end
 }
