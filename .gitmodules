@@ -1,0 +1,3 @@
+[submodule "nvim/lua/configLegal/vendor/markdown-preview.nvim"]
+	path = nvim/lua/configLegal/vendor/markdown-preview.nvim
+	url = https://github.com/iamcco/markdown-preview.nvim.git
